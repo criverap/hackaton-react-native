@@ -2,9 +2,7 @@ const isValidUser = (userID) => {
     if (userID){
         return fetch('https://hackathon-mobile.firebaseio.com/users/'+userID+'.json')
         .then(response => response.json())
-        .then(responseJson => {
-            return responseJson 
-        })
+        .then(responseJson => responseJson)
         .catch((error) => {
            console.error(error)
         });
@@ -12,6 +10,3 @@ const isValidUser = (userID) => {
 }
 
 export default isValidUser;
-
-
-

@@ -60,17 +60,20 @@ setShadowBackground(){
             
                 <Modal
                     visible={this.state.isError} transparent={true}
-                        animationType={'none'}
-                        onRequestClose={() => this.closeModal()}>
-                <View style={styles.errorModal}>
-                    <Text style={styles.modalText}>Datos Incorrectos</Text>
-                        <TouchableOpacity
-                            onPress={() => this.closeModal()}
-                            style={styles.button}>
-                            <Text style={styles.buttonText}>Aceptar</Text>
-                        </TouchableOpacity>
-                </View>
+                    animationType={'none'}
+                    onRequestClose={() => this.closeModal()}>
+                    <View style={styles.modalContainer}>
+                        <View style={styles.innerContainer}>
+                            <Text style={styles.modalText}>Datos Incorrectos</Text>
+                            <TouchableOpacity
+                                onPress={() => this.closeModal()}
+                                style={styles.button}>
+                                <Text style={styles.buttonText}>Aceptar</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
                 </Modal>
+
           
             </View>
         );
@@ -125,6 +128,20 @@ const styles = StyleSheet.create({
         fontSize: 18,
         marginBottom: 15,
         color:'#184371'
-    }
+    },
+    modalContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        backgroundColor: 'rgba(0,0,0,0.5)',
+    },
+    innerContainer: {
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#fff',
+        height: 140,
+        width: 340,
+        alignSelf: 'center'
+    },
 
 });

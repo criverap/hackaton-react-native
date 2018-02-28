@@ -62,8 +62,8 @@ setShadowBackground(){
                     visible={this.state.isError} transparent={true}
                     animationType={'none'}
                     onRequestClose={() => this.closeModal()}>
-                    <View style={styles.modalContainer}>
-                        <View style={styles.innerContainer}>
+                    <View style={styles.errorModal}>
+                        <View style={styles.innerErrorModal}>
                             <Text style={styles.modalText}>Datos Incorrectos</Text>
                             <TouchableOpacity
                                 onPress={() => this.closeModal()}
@@ -114,27 +114,17 @@ const styles = StyleSheet.create({
         fontSize: 25,
         color:'#fff',
         alignSelf: 'center'
-    }, errorModal: {
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#fff',
-        height:140,
-        width:340,
-        marginTop:280,
-        alignSelf:'center',
-        borderWidth:1
     }, modalText:{
         fontSize: 18,
         marginBottom: 15,
         color:'#184371'
     },
-    modalContainer: {
+    errorModal: {
         flex: 1,
         justifyContent: 'center',
         backgroundColor: 'rgba(0,0,0,0.5)',
     },
-    innerContainer: {
+    innerErrorModal: {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',

@@ -1,18 +1,17 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity, Modal, Button } from 'react-native';
-import cssta from 'cssta/native'
+import isValidUser from './../../api/HttpsController'
 
 export default class Login extends React.Component {
 
 state = {
     rut:'',
-    password: '', 
+    password: '',
     isError: false
 }
 
 openModal() {
     this.setState({ isError: true })
-    this.setShadowBackground()
 }
 
 closeModal() {
@@ -25,6 +24,15 @@ setShadowBackground(){
     }
 }
 
+logIn(){
+    console.log(isValidUser(this.state.rut))
+   /* if (){
+        return this.props.navigation.navigate('Home')
+    } else {
+        return this.openModal()
+    }*/
+}
+
     render() {
         return (
             <View style={styles.container}>
@@ -34,7 +42,6 @@ setShadowBackground(){
                 />
                 <Text style={styles.title}>
                 Ingresa con tu cuenta Cuprum</Text>
-                
                 <View style={styles.inputs}>
                     <Text style={styles.label}>Rut</Text>
                     <TextInput
@@ -52,8 +59,7 @@ setShadowBackground(){
                 </View>
 
                 <TouchableOpacity
-                    onPress={() => this.openModal()} 
-                   // onPress={() => this.props.navigation.navigate('Home')} 
+                    onPress={() => this.logIn()} 
                     style={styles.button}>
                     <Text style={styles.buttonText}>Ingresar</Text>
                 </TouchableOpacity>
@@ -73,13 +79,10 @@ setShadowBackground(){
                         </View>
                     </View>
                 </Modal>
-
-          
             </View>
         );
     }
 }
-
 
 const styles = StyleSheet.create({
     container: {

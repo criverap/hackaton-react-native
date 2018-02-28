@@ -36,9 +36,9 @@ state = {
                 </View>
 
                 <Button
-                color="#ffa409"
-                onPress={() => this.props.navigation.navigate('Home')}
-                title="Ingresar"
+                    color="#ffa409"
+                    onPress={() => this.props.navigation.navigate('Home')}
+                    title="Ingresar"
                 />
             </View>
         );
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     }, title: {
         marginTop: 100,
         marginBottom: 5,
-        fontWeight: 'bold',
+        fontWeight: '200',
         fontSize:18,
         color:'#4d4d4d',
         alignSelf: 'center',

@@ -7,9 +7,7 @@ import Home from './src/views/Home/Home';
 class App extends React.Component {  
   render() {
     return (
-      <View style={styles.container}>
-        
-      </View>
+      <Login navigation={this.props.navigation}/>
     );
   }
 }

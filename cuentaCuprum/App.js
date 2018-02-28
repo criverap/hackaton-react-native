@@ -1,15 +1,25 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { StackNavigator } from 'react-navigation'
+import Login from './src/views/Login/Login';
+import Home from './src/views/Home/Home';
 
-export default class App extends React.Component {
+class App extends React.Component {  
   render() {
     return (
       <View style={styles.container}>
-
+        
       </View>
     );
   }
 }
+
+const NavigationMenu = StackNavigator ({
+  Login: { screen: Login },
+  Home: { screen: Home }
+});
+
+export default NavigationMenu
 
 const styles = StyleSheet.create({
   container: {

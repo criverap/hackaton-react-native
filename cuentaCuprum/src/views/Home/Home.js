@@ -1,11 +1,23 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Dimensions } from 'react-native';
 
 export default class Home extends React.Component {
+    static navigationOptions = {
+        title: 'Inicio',
+        headerTitleStyle: {
+            marginRight:85,
+            color:'#030303',
+            flex: 1, 
+            textAlign:'center',
+            alignSelf:'center',
+            
+        }
+    };
+
     render() {
         return (
             <View style={styles.container}>
-                <Text>Bienvenido!!</Text>
+                <Text style={styles.welcomeText}>Ingreso Exitoso</Text>
             </View>
         );
     }
@@ -16,6 +28,10 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#F5FCFF',
-    },
+        backgroundColor: '#FFF',
+    }, welcomeText:{
+        color:'#184371',
+        fontSize:22,
+        marginBottom:200
+    }
 });

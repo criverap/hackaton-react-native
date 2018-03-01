@@ -14,7 +14,7 @@ class App extends React.Component {
 
 const NavigationMenu = StackNavigator ({
   Login: { screen: Login },
-  Home: { screen: Home }
+  Home: { screen: Home},
 });
 
 export default NavigationMenu

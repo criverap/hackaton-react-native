@@ -4,8 +4,8 @@ import { StyleSheet, Text, View, Dimensions } from 'react-native';
 export default class Home extends React.Component {
     static navigationOptions = {
         title: 'Inicio',
+        headerLeft: null,
         headerTitleStyle: {
-            marginRight:85,
             color:'#030303',
             flex: 1, 
             textAlign:'center',

@@ -1,40 +1,36 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity, Modal, Button } from 'react-native';
 import isValidUser from './../../api/HttpsController'
+import ErrorModal from './../Modals/ErrorModal'
 
 export default class Login extends React.Component {
 
 state = {
     rut:'',
     password: '',
-    isError: false, 
-    data: []
-}
-
-openModal() {
-    this.setState({ isError: true })
-}
-
-closeModal() {
-    this.setState({ isError: false })
-}
-
-setShadowBackground(){
-    return {
-        backgroundColor: '#DDD'
-    }
+    modalState: false
 }
 
 async logIn(){
     const jsonResponse = await isValidUser(this.state.rut);
+
     if (jsonResponse) {
         return this.props.navigation.navigate('Home')
     } else {
-        return this.openModal()
+        this.setState({modalState: true})
     }
 }
 
+    updateModalState(currentState){
+        this.setState({ modalState: currentState})
+    }
+
     render() {
+        let modal = () => {
+            if (this.state.modalState){
+                return <ErrorModal showModal={true} updateModal={this.updateModalState.bind(this)} />
+            } 
+        }
         return (
             <View style={styles.container}>
                 <Image 
@@ -60,26 +56,11 @@ async logIn(){
                 </View>
 
                 <TouchableOpacity
-                    onPress={() => this.logIn()} 
+                    onPress={() => { this.logIn() }} 
                     style={styles.button}>
                     <Text style={styles.buttonText}>Ingresar</Text>
-                </TouchableOpacity>
-            
-                <Modal
-                    visible={this.state.isError} transparent={true}
-                    animationType={'none'}
-                    onRequestClose={() => this.closeModal()}>
-                    <View style={styles.errorModal}>
-                        <View style={styles.innerErrorModal}>
-                            <Text style={styles.modalText}>Datos Incorrectos</Text>
-                            <TouchableOpacity
-                                onPress={() => this.closeModal()}
-                                style={styles.button}>
-                                <Text style={styles.buttonText}>Aceptar</Text>
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-                </Modal>
+                </TouchableOpacity> 
+                {modal()}
             </View>
         );
     }
@@ -118,24 +99,5 @@ const styles = StyleSheet.create({
         fontSize: 25,
         color:'#fff',
         alignSelf: 'center'
-    }, modalText:{
-        fontSize: 18,
-        marginBottom: 15,
-        color:'#184371'
-    },
-    errorModal: {
-        flex: 1,
-        justifyContent: 'center',
-        backgroundColor: 'rgba(0,0,0,0.5)',
-    },
-    innerErrorModal: {
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#fff',
-        height: 140,
-        width: 340,
-        alignSelf: 'center'
-    },
-
+    }
 });

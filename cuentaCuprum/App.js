@@ -1,8 +1,8 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import { StyleSheet, Text, View } from 'react-native'
 import { StackNavigator } from 'react-navigation'
-import Login from './src/views/Login/Login';
-import Home from './src/views/Home/Home';
+import Login from './src/views/Login/Login'
+import Home from './src/views/Home/Home'
 
 class App extends React.Component {  
   render() {

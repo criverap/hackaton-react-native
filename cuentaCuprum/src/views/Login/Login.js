@@ -7,8 +7,7 @@ export default class Login extends React.Component {
 state = {
     rut:'',
     password: '',
-    isError: false, 
-    data: []
+    isError: false
 }
 
 openModal() {
@@ -19,15 +18,9 @@ closeModal() {
     this.setState({ isError: false })
 }
 
-setShadowBackground(){
-    return {
-        backgroundColor: '#DDD'
-    }
-}
-
 async logIn(){
-    const jsonResponse = await isValidUser(this.state.rut);
-    if (jsonResponse) {
+    const validUser = await isValidUser(this.state.rut, this.state.password);
+    if (validUser) {
         return this.props.navigation.navigate('Home')
     } else {
         return this.openModal()

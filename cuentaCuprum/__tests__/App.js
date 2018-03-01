@@ -1,12 +1,12 @@
-import 'react-native';
-import React from 'react';
-import App from '../App';
+import React from 'react'
+import Enzyme, { shallow, mount } from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
+import App from '../App'
 
-// Note: test renderer must be required after react-native.
-import renderer from 'react-test-renderer';
+Enzyme.configure({ adapter: new Adapter() })
 
-it('renders correctly', () => {
-  const tree = renderer.create(
-    <App />
-  );
-});
+it('display component', () => {
+  const wrapper = shallow(<App />)
+
+  expect(wrapper).toBeDefined()
+})

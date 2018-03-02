@@ -36,7 +36,7 @@ async logIn(){
             <View style={styles.container}>
                 <Image 
                     style={styles.logo}
-                    source={require('./logo_cuprum.png')}
+                    source={require('./../resources/images/logo_cuprum.png')}
                 />
                 <Text style={styles.title}>
                 Ingresa con tu cuenta Cuprum</Text>

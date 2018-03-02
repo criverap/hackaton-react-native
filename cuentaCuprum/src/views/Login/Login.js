@@ -1,13 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity, Modal, Button } from 'react-native';
-import isValidUser from './../../api/HttpsController'
+import HTTPS from './../../api/HttpsController'
 
 export default class Login extends React.Component {
-
-state = {
-    rut:'',
-    password: '',
-    isError: false
+constructor(props){
+    super(props)
+    this.state = {
+        rut:'',
+        password: '',
+        isError: false
+    }
+    this.httpsClient = new HTTPS()
 }
 
 openModal() {
@@ -19,7 +22,7 @@ closeModal() {
 }
 
 async logIn(){
-    const validUser = await isValidUser(this.state.rut, this.state.password);
+    const validUser = await this.httpsClient.isValidUser(this.state.rut, this.state.password);
     if (validUser) {
         return this.props.navigation.navigate('Home')
     } else {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity, Modal, Button } from 'react-native';
 import HTTPS from './../../api/HttpsController'
+import totalAmount from './../../utils/totalAmount'
 
 export default class Login extends React.Component {
 constructor(props){
@@ -23,8 +24,8 @@ closeModal() {
 
 async logIn(){
     const validUser = await this.httpsClient.isValidUser(this.state.rut, this.state.password);
-    if (validUser) {
-        return this.props.navigation.navigate('Home')
+    if (await validUser) {
+        return this.props.navigation.navigate('Home', { amount: totalAmount(validUser), name: validUser.name})
     } else {
         return this.openModal()
     }

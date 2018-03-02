@@ -15,9 +15,10 @@ export default class Home extends React.Component {
     };
 
     render() {
+        const { params } = this.props.navigation.state
         return (
             <View style={styles.container}>
-                <Text style={styles.welcomeText}>Ingreso Exitoso</Text>
+                <Text style={styles.welcomeText}>Hola {params.name} tu ahorro total es {params.amount}</Text>
             </View>
         );
     }
